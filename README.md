@@ -228,3 +228,12 @@ masterFunction()
 
 > The table size for a single dataset in pipe-seperated format is in GBs. The GeneID field is memory heavy field and it increases the overall size of the output table dataset.
 
+### Screenshots 
+
+
+![alt text](https://github.com/Aashay7/CNS-Task-3/blob/main/Screenshots/Screenshot%202021-08-22%20at%201.51.29%20PM.png)
+
+# 
+
+![alt text](https://github.com/Aashay7/CNS-Task-3/blob/main/Screenshots/Screenshot%202021-08-22%20at%203.22.12%20PM.png)
+

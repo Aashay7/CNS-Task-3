@@ -205,7 +205,7 @@ def masterFunction():
             ## SAVE TABLE 
             print('Saving Table....')
             os.mkdir(collection['name'])
-            filepath = collection['name'] + '/' + dataset['name']
+            filepath = collection['name'] + '/' + dataset['name'] + '.csv'
             table.to_csv(filepath, sep='|')
             print('Table Saved Successfully.')
             table_dataholder = table

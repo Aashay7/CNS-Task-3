@@ -240,13 +240,10 @@ masterFunction()
 
 ![alt text](https://github.com/Aashay7/CNS-Task-3/blob/main/Screenshots/Screenshot%202021-08-22%20at%203.26.52%20PM.png)
 
-# 
-
-![alt text](https://github.com/Aashay7/CNS-Task-3/blob/main/Screenshots/Screenshot%202021-08-22%20at%203.22.12%20PM.png)
 
 # 
 
-> File Size Issue - Table size too big because of the Gene ID data field.
+> File Size Issue - Table size too big because of the Gene ID data field. Unable to attach the whole file in the repository.
 
 ![alt text](https://github.com/Aashay7/CNS-Task-3/blob/main/Screenshots/filesizeissue.PNG)
 

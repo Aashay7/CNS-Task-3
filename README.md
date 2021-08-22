@@ -205,7 +205,7 @@ def masterFunction():
             ## SAVE TABLE 
             print('Saving Table....')
             os.mkdir(collection['name'])
-            filepath = collection['name'] + '/' + dataset['name']
+            filepath = collection['name'] + '/' + dataset['name'] + '.csv'
             table.to_csv(filepath, sep='|')
             print('Table Saved Successfully.')
             table_dataholder = table
@@ -235,5 +235,11 @@ masterFunction()
 
 # 
 
+![alt text](https://github.com/Aashay7/CNS-Task-3/blob/main/Screenshots/Screenshot%202021-08-22%20at%203.26.52%20PM.png)
+
+# 
+
 ![alt text](https://github.com/Aashay7/CNS-Task-3/blob/main/Screenshots/Screenshot%202021-08-22%20at%203.22.12%20PM.png)
+
+# 
 

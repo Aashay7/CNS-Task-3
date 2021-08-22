@@ -230,6 +230,9 @@ masterFunction()
 
 ### Screenshots 
 
+![alt text](https://github.com/Aashay7/CNS-Task-3/blob/main/Screenshots/Capture.PNG)
+
+#
 
 ![alt text](https://github.com/Aashay7/CNS-Task-3/blob/main/Screenshots/Screenshot%202021-08-22%20at%201.51.29%20PM.png)
 
@@ -246,4 +249,5 @@ masterFunction()
 > File Size Issue - Table size too big because of the Gene ID data field.
 
 ![alt text](https://github.com/Aashay7/CNS-Task-3/blob/main/Screenshots/filesizeissue.PNG)
+
 

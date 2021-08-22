@@ -243,3 +243,7 @@ masterFunction()
 
 # 
 
+> File Size Issue - Table size too big because of the Gene ID data field.
+
+![alt text](https://github.com/Aashay7/CNS-Task-3/blob/main/Screenshots/filesizeissue.PNG)
+

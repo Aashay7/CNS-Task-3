@@ -291,21 +291,20 @@ masterFunction()
 
 ### Screenshots 
 
-![alt text](https://github.com/Aashay7/CNS-Task-3/blob/main/Screenshots/Capture.PNG)
+![alt text](https://github.com/Aashay7/CNS-Task-3/blob/main/Screenshots/Screenshot%202021-08-23%20at%202.42.29%20AM.png)
 
 #
+> Prepared Table.
 
-![alt text](https://github.com/Aashay7/CNS-Task-3/blob/main/Screenshots/Screenshot%202021-08-22%20at%201.51.29%20PM.png)
-
-# 
-
-![alt text](https://github.com/Aashay7/CNS-Task-3/blob/main/Screenshots/Screenshot%202021-08-22%20at%203.26.52%20PM.png)
-
+![alt text](https://github.com/Aashay7/CNS-Task-3/blob/main/Screenshots/Screenshot%202021-08-23%20at%202.45.12%20AM.png)
 
 # 
 
-> File Size Issue - Table size too big because of the Gene ID data field. Unable to attach the whole file in the repository.
+![alt text](https://github.com/Aashay7/CNS-Task-3/blob/main/Screenshots/Screenshot%202021-08-23%20at%201.38.53%20AM.png)
 
-![alt text](https://github.com/Aashay7/CNS-Task-3/blob/main/Screenshots/filesizeissue.PNG)
+
+# 
+
+![alt text](https://github.com/Aashay7/CNS-Task-3/blob/main/Screenshots/Screenshot%202021-08-23%20at%202.45.48%20AM.png)
 
 

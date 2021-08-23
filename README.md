@@ -107,6 +107,41 @@ def initializeTable():
   return table
 ```
 
+#### Gene data is fetched from the X(embeddings) matrix and all the non-zero values of GENEs for the corresponding cells are fetched.
+
+```
+def fetch_and_include_GENE_data(table, dataset, list_ex):
+  print('Introducting GENE data into the table.')
+  rows,cols = dataset.X.nonzero()
+  #print('Rows - ', rows , len(rows))
+  #print('Cols - ', cols, len(cols))
+
+  diction = {}
+  for i in list_ex:
+    diction[i] = []
+
+  #print(diction)
+
+  for j in range(len(cols)):
+    if (rows[j] in diction.keys()):
+      diction[rows[j]].append(cols[j])
+
+  gene_list = []
+  #dataset_rows = len(diction.keys())
+  for i in diction.keys():
+    genes = ''
+    for position in diction[i]:
+      genes = genes + dataset.var_names[position] + ';'
+    gene_list.append(genes)
+  #print(len(gene_list))
+  #print(gene_list)
+  #for g in gene_list:
+  #  print(g, '\n')
+  for i in range(table.shape[0]):
+    table['HGNC/ENSEMBL Gene IDs'][i] = gene_list[i]
+  print('Gene Data Succesfully entered.')
+```
+
 #### This function is used to read the downloaded data from the cellxgene website, fetch the required information and enter it into the table. 
 
 ```
@@ -128,38 +163,55 @@ def enter_Details_into_Table(download_name, Disease, Assay, Tissue, Dataset_Name
   # 'Cells of this type', 'Disease', 'Assay', 'Tissue', 'Dataset Name'
   
   # Gene IDs Aggregation into a single field.
-  list_of_Genes = ''
-  for i in range(dataset.shape[1]):
-    list_of_Genes = list_of_Genes + dataset.var_names[i] + ';'
-
-  initial_dataset_no_of_rows = dataset.shape[0]
-  counter = 0
-
-  # Table data entry loop.
+  table_cell_ids = []
+  table_row_ids = []
   for i in range(dataset.shape[0]):
-    no_of_cells_of_same_type = int(dataset.obs.cell_type.value_counts()[dataset.obs['cell_type'][i]])
-    table.loc[len(table.index)] = [
+
+    if (dataset.obs['cell_type_ontology_term_id'][i] not in table_cell_ids):
+      table_row_ids.append(i)
+      
+      num_cells_float = dataset.obs.cell_type_ontology_term_id.value_counts()[dataset.obs['cell_type_ontology_term_id'][i]] 
+      no_of_cells_of_same_type = int (num_cells_float)
+      
+      table.loc[len(table.index)] = [
                               dataset.obs['tissue'][i],
                               dataset.obs['cell_type_ontology_term_id'][i],
-                              list_of_Genes,
+                              '_to_be_filled_',
                               no_of_cells_of_same_type,
                               Disease, 
                               dataset.obs['assay'][i], 
                               Tissue, 
                               Dataset_Name
-      ]
-    counter += 1 
-  print('Data successfully added to the Table.', '\n\t-> Added ', counter, ' rows to the table.')
+                              ]
+      
+      table_cell_ids.append(dataset.obs['cell_type_ontology_term_id'][i])
+
+  fetch_and_include_GENE_data(table, dataset, table_row_ids)
+  print('Data successfully added to the Table.')
   print(table)
 
   return table
+```
+
+#### Total checker function to match the total cell_count in the dataset and the cell_count mentioned on the website.
+
+```
+def check_total_cell_count(cell_count_total_website, table):
+  print('Website Cell Count : ', cell_count_total_website)
+  table_total = int(sum(table['No. of Cells of this type']))
+  print('Total Cell Counts in the Table : ', table_total)
+  try:
+    if (table_total == cell_count_total_website):
+      print('Cell count in the prepared table matches the cell count data on the website!!')
+  except:
+    pass
+
 ```
 
 #### Master Function is the main executable function. It calls all the above mentioned functions and saves the table in the required 'pipe-seperated' values format.
 
 ```
 table_dataholder = None
-
 def masterFunction():
   
   collections, https, CELLXGENE_PRODUCTION_ENDPOINT, COLLECTIONS, DATASETS = fetchCollectionData()
@@ -177,6 +229,11 @@ def masterFunction():
   
   for collection in all_collections:
     for dataset in collection['datasets']:
+      try:
+        cell_count_total_website = dataset['cell_count']
+      except:
+        cell_count_total_website = None
+
       for asset in dataset['dataset_assets']:
 
         # Using the H5 format for less overload and compatibility
@@ -205,15 +262,17 @@ def masterFunction():
             ## SAVE TABLE 
             print('Saving Table....')
             os.mkdir(collection['name'])
-            filepath = collection['name'] + '/' + dataset['name'] + '.csv'
+            filepath = collection['name'] + '/' + dataset['name']
             table.to_csv(filepath, sep='|')
             print('Table Saved Successfully.')
             table_dataholder = table
+            check_total_cell_count(cell_count_total_website, table)
 
             ## To effectively use the Google COLAB RAM. 
             table = None
             del table
-            print('Local Copy of table removed to clear RAM Usage.')
+            print('Local Copy of table removed from RAM')
+
 
 ```
 

@@ -12,6 +12,8 @@ In this workbook, the private download API of cellxgene website is used to retri
 - Tissue
 - Dataset Name
 
+> NOTE: To recreate the results and executing this code, I would recommend atleast 16GB of RAM, as some of the datasets on the cellxgene website are too large to be read by scanpy. :)
+
 The table has been prepared in the pipe("|") seperated values format. 
 
 Scanpy is used to read the h5 format data. With the help of this package, the data is accessed and used to populate the table seamlessly.
@@ -22,7 +24,7 @@ Issue
 > The work was executed on Google Colab and the RAM limitation of 12GB hindered the data reads on the larger datasets.
 > NOTE: On the cellxgene website, there are some datasets with an empty cell_count field. 
 
-> For results, I have attached the screenshots and images of the table(in the pipe-seperated value format as well as DataFrame format)
+> For results, I have attached the screenshots and the table(in the pipe-seperated value format.
 
 ## Code
 

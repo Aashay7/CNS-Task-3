@@ -93,7 +93,7 @@ def filter_Dataset_Homo_Sapien_Normal(all_collections):
 
 #### Initializing the output table. As mentioned in the google document, the dataframe column names are set accordingly. 
 
-```
+```sh
 def initializeTable():
   table = pd.DataFrame({
     'Organ/Tissue Type' : [], 
@@ -111,7 +111,7 @@ def initializeTable():
 
 #### Gene data is fetched from the X(embeddings) matrix and all the non-zero values of GENEs for the corresponding cells are fetched.
 
-```
+```sh
 def fetch_and_include_GENE_data(table, dataset, list_ex):
   print('Introducting GENE data into the table.')
   rows,cols = dataset.X.nonzero()
@@ -146,7 +146,7 @@ def fetch_and_include_GENE_data(table, dataset, list_ex):
 
 #### This function is used to read the downloaded data from the cellxgene website, fetch the required information and enter it into the table. 
 
-```
+```sh
 def enter_Details_into_Table(download_name, Disease, Assay, Tissue, Dataset_Name):
   '''try:
     table = pd.read_csv('dataTable.csv', sep='|')
@@ -197,7 +197,7 @@ def enter_Details_into_Table(download_name, Disease, Assay, Tissue, Dataset_Name
 
 #### Total checker function to match the total cell_count in the dataset and the cell_count mentioned on the website.
 
-```
+```sh
 def check_total_cell_count(cell_count_total_website, table):
   print('Website Cell Count : ', cell_count_total_website)
   table_total = int(sum(table['No. of Cells of this type']))
@@ -212,7 +212,7 @@ def check_total_cell_count(cell_count_total_website, table):
 
 #### Master Function is the main executable function. It calls all the above mentioned functions and saves the table in the required 'pipe-seperated' values format.
 
-```
+```sh
 table_dataholder = None
 def masterFunction():
   
@@ -280,7 +280,7 @@ def masterFunction():
 
 #### Master Function currently fetches collection data and downloads the dataset in a serial manner, which can be parallelized.
 
-```
+```sh
 masterFunction()
 ```
 

@@ -24,7 +24,7 @@ Issue
 > The work was executed on Google Colab and the RAM limitation of 12GB hindered the data reads on the larger datasets.
 > NOTE: On the cellxgene website, there are some datasets with an empty cell_count field. 
 
-> For results, I have attached the screenshots and the table(in the pipe-seperated value format.
+> For results, I have attached the screenshots and the table in the pipe-seperated value format.
 
 ## Code
 
